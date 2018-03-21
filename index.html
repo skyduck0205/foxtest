@@ -39,7 +39,6 @@
         $scope.questions = {};
         $scope.$watch('set', function() {
           $scope.questions = $window[$scope.set];
-          console.log($scope.questions);
         });
       })
       .filter('highlight', function($sce) {
