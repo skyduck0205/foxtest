@@ -27,41 +27,62 @@
 * {
   word-break: break-all;
   box-sizing: border-box;
+  color: #444;
 }
 html {
   margin: 0;
   padding: 10px;
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
-  color: #444;
   font-size: 16px;
 }
 body {
   margin: 0;
 }
-nav {
+nav, footer {
   position: fixed;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   top: 0;
   left: 0;
   padding: 10px;
   width: 100%;
-  background: rgba(255,255,255,.8)
+  background: #fafafa;
+}
+nav {
+  border-bottom: 1px solid #ebebeb;
 }
 nav input {
   flex: 1;
   padding: 10px;
-  width: 300px;
+  height: 40px;
   font-size: 16px;
+  border: 1px solid #ebebeb;
 }
 nav span {
   margin-left: 20px;
 }
 nav select {
-  height: 42px;
+  height: 40px;
   width: 200px;
   font-size: 16px;
+  border: 1px solid #ebebeb;
+  border-radius: 0;
+  background: #fff;
+}
+footer {
+  justify-content: center;
+  top: auto;
+  bottom: 0;
+  border-top: 1px solid #ebebeb;
+}
+footer a {
+  display: inline-flex;
+  margin-left: 20px;
+}
+footer a img {
+  height: 30px;
 }
 section + section {
   margin-top: 20px;
@@ -86,5 +107,35 @@ li:nth-child(even) {
   background: yellow;
 }
 .q {
-  padding-top: 65px;
+  padding: 65px 0;
+}
+
+
+@media screen and (max-width: 720px) {
+  nav select {
+    width: 40px;
+    border-left: 0;
+  }
+  nav span {
+    display: none;
+  }
+  .select-wrapper {
+    position: relative;;
+  }
+  .select-wrapper:before {
+    content: '▽';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    box-sizing: border-box;
+    background: #fff;
+    color: #999;
+    border: 1px solid #ebebeb;
+    border-left: 0;
+    pointer-events: none;
+  }
 }

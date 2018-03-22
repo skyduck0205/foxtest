@@ -13,9 +13,10 @@
 <body ng-controller="TestController">
   <nav>
     <input type="text" ng-model="search" placeholder="關鍵字" />
-    <span>
-      考試項目：<select ng-options="item.id as item.label for item in selector" ng-model="set"></select>
-    </span>
+    <span>考試項目：</span>
+    <div class="select-wrapper">
+      <select ng-options="item.id as item.label for item in selector" ng-model="set"></select>
+    </div>
   </nav>
   <div class="q">
     <section ng-repeat="(label, qs) in questions">
@@ -25,6 +26,10 @@
       </ul>
     </section>
   </div>
+  <footer style="display:none">
+    良心大考驗，歡迎給贊助
+    <a href="https://p.opay.tw/x8CAF" target="_blank"><img src="https://payment.opay.tw/Content/themes/WebStyle201404/images/allpay.png" /></a>
+  </footer>
 
   <script>
     angular.module('Test', []);
@@ -32,7 +37,7 @@
       .module('Test')
       .controller('TestController', function($scope, $window) {
         $scope.selector = [
-          { id: 'test1', label: '工業大數據' },
+          { id: 'test1', label: '工業大樹鋸' },
           { id: 'test0', label: '小吃店老闆' }
         ];
         $scope.set = 'test1';
