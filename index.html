@@ -63,7 +63,7 @@
       <select ng-options="item.id as item.label for item in selector" ng-model="set"></select>
     </div>
   </nav>
-  <div class="q">
+  <div class="q" ng-class="{ blur: contact }">
     <section ng-repeat="(label, qs) in questions">
       <h2>{{label}}</h2>
       <ul>
@@ -78,16 +78,29 @@
       <div class='skype-share' data-href='https://skyduck0205.github.io/foxtest/' data-lang='zh-TW' data-text='狐狸怎麼教' data-style='square' ></div>
     </div>
     <div class="donate">
+      <small>作者: <a href="?contact">skyduck</a></small>
+      <small>|</small>
       <small>贊助不會讓網站更好</small>
       <a href="https://p.opay.tw/x8CAF" target="_blank"><img src="https://payment.opay.tw/Content/themes/WebStyle201404/images/allpay.png" /></a>
     </div>
   </footer>
+
+  <div class="contact" ng-if="contact">
+    <a class="close" href="/">╳</a>
+    <img src="https://avatars2.githubusercontent.com/u/6456051?s=460&v=4">
+    <section>
+      <p><strong>Author:</strong> skyduck</p>
+      <p><strong>Email:</strong> <a href="mailto:skyduck0205@gmail.com">skyduck0205@gmail.com</a></p>
+      <p><strong>Github:</strong> <a href="https://github.com/skyduck0205" target="_blank">https://github.com/skyduck0205</a></p>
+    </section>
+  </div>
 
   <script>
     angular.module('Test', []);
     angular
       .module('Test')
       .controller('TestController', function($scope, $window) {
+        $scope.contact = false;
         $scope.selector = [
           { id: 'test1', label: '工業大樹鋸' },
           { id: 'test0', label: '小吃店老闆' }
@@ -99,6 +112,10 @@
         $scope.$watch('set', function() {
           $scope.questions = $window[$scope.set];
         });
+
+        if (window.location.search === '?contact') {
+          $scope.contact = true;
+        }
       })
       .filter('highlight', function($sce) {
         return function(text, phrase) {

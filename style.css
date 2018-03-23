@@ -143,6 +143,13 @@ li:nth-child(even) {
   width: 100%;
   overflow-y: auto;
 }
+.q.blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
 .share .skypeShare {
   width: 20px !important;
   height: 20px !important;
@@ -163,6 +170,29 @@ li:nth-child(even) {
 }
 .donate a img {
   height: 30px;
+}
+.contact {
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,.8);
+}
+.contact strong {
+  display: inline-block;
+  width: 80px;
+}
+.contact a.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
 }
 
 @media screen and (max-width: 720px) {
