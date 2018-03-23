@@ -2,17 +2,61 @@
 <html lang="en" ng-app="Test">
 <head>
   <meta charset="UTF-8">
+  <meta name="author" content="skyduck">
+  <meta name="copyright" content="skyduck">
+  <meta name="description" content="狐狸怎麼教">
+  <meta itemprop="name" content="Fox Test">
+  <meta itemprop="image" content="fox.png">
+  <meta itemprop="description" content="狐狸怎麼教">
+  <meta property="og:title" content="Fox Test" >
+  <meta property="og:url" content="https://skyduck0205.github.io/foxtest/">
+  <meta property="og:image" content="fox.png">
+  <meta property="og:description" content="狐狸怎麼教">
+  <meta property="og:site_name" content="Fox Test">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Test</title>
+  <link rel="author" href="https://github.com/skyduck0205">
+
+  <meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="76x76" href="fox.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="fox.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="fox.png">
+  <link rel="mask-icon" href="fox.png" color="#5bbad5">
+  <link rel="shortcut icon" href="fox.png">
+
+  <title>Fox Test</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+  <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
   <script src="test0.js"></script>
   <script src="test1.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
 
+  <script> // skype share
+  // Place this code in the head section of your HTML file
+  (function(r, d, s) {
+    r.loadSkypeWebSdkAsync = r.loadSkypeWebSdkAsync || function(p) {
+      var js, sjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(p.id)) { return; }
+      js = d.createElement(s);
+      js.id = p.id;
+      js.src = p.scriptToLoad;
+      js.onload = p.callback
+      sjs.parentNode.insertBefore(js, sjs);
+    };
+    var p = {
+      scriptToLoad: 'https://swx.cdn.skype.com/shared/v/latest/skypewebsdk.js',
+      id: 'skype_web_sdk'
+    };
+    r.loadSkypeWebSdkAsync(p);
+  })(window, document, 'script');
+  </script>
 </head>
 <body ng-controller="TestController">
+  <img class="logo" src="fox.png">
   <nav>
-    <input type="text" ng-model="search" placeholder="關鍵字" />
+    <div class="input-wrapper">
+      <input type="text" ng-model="search" placeholder="關鍵字" />
+      <small ng-if="search.length" ng-click="onClearClick()">╳</small>
+    </div>
     <span>考試項目：</span>
     <div class="select-wrapper">
       <select ng-options="item.id as item.label for item in selector" ng-model="set"></select>
@@ -27,8 +71,15 @@
     </section>
   </div>
   <footer>
-    贊助不會讓網站更好
-    <a href="https://p.opay.tw/x8CAF" target="_blank"><img src="https://payment.opay.tw/Content/themes/WebStyle201404/images/allpay.png" /></a>
+    <div class="share">
+      <small>分享到</small>
+      <div class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-url="https://skyduck0205.github.io/foxtest/" style="display: none;"></div>
+      <div class='skype-share' data-href='https://skyduck0205.github.io/foxtest/' data-lang='zh-TW' data-text='狐狸怎麼教' data-style='square' ></div>
+    </div>
+    <div class="donate">
+      <small>贊助不會讓網站更好</small>
+      <a href="https://p.opay.tw/x8CAF" target="_blank"><img src="https://payment.opay.tw/Content/themes/WebStyle201404/images/allpay.png" /></a>
+    </div>
   </footer>
 
   <script>
@@ -42,6 +93,8 @@
         ];
         $scope.set = 'test1';
         $scope.questions = {};
+        $scope.search = '';
+        $scope.onClearClick = function() { $scope.search = ''; }
         $scope.$watch('set', function() {
           $scope.questions = $window[$scope.set];
         });

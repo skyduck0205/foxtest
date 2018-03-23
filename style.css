@@ -31,7 +31,6 @@
 }
 html {
   margin: 0;
-  padding: 10px;
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
   font-size: 16px;
@@ -40,6 +39,7 @@ body {
   margin: 0;
 }
 nav, footer {
+  z-index: 10;
   position: fixed;
   display: flex;
   align-items: center;
@@ -54,11 +54,11 @@ nav {
   border-bottom: 1px solid #ebebeb;
 }
 nav input {
-  flex: 1;
-  padding: 10px;
-  height: 40px;
+  padding: 0 40px 0 10px;
+  line-height: 40px;
+  width: 100%;
   font-size: 16px;
-  border: 1px solid #ebebeb;
+  border: 0;
 }
 nav span {
   margin-left: 20px;
@@ -67,30 +67,30 @@ nav select {
   height: 40px;
   width: 200px;
   font-size: 16px;
-  border: 1px solid #ebebeb;
+  border: 0;
   border-radius: 0;
   background: #fff;
 }
 footer {
-  justify-content: center;
   top: auto;
   bottom: 0;
   border-top: 1px solid #ebebeb;
+}
+footer > div {
+  display: flex;
+  align-items: center;
+}
+footer small {
+  margin-right: 10px;
   color: #999;
-}
-footer a {
-  display: inline-flex;
-  margin-left: 20px;
-}
-footer a img {
-  height: 30px;
 }
 section + section {
   margin-top: 20px;
 }
 h2 {
-  color: cadetblue;
   margin: 0;
+  padding: 0 10px;
+  color: cadetblue;
   font-weight: normal;
 }
 ul {
@@ -102,15 +102,68 @@ li {
   padding: 10px;
 }
 li:nth-child(even) {
-  background: #f2f2f2;
+  background: rgba(0,0,0,.05);
+}
+.logo {
+  position: fixed;
+  bottom: 50px;
+  right: 0;
+  width: 30%;
+  max-width: 240px;
+  opacity: 0.45;
+  z-index: 1;
+}
+.input-wrapper {
+  position: relative;
+  flex: 1;
+  border: 1px solid #ebebeb;
+}
+.input-wrapper small {
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 40px;
+  width: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.select-wrapper {
+  position: relative;
+  border: 1px solid #ebebeb;
 }
 .hl {
   background: yellow;
 }
 .q {
-  padding: 65px 0;
+  z-index: 2;
+  position: fixed;
+  top: 63px;
+  bottom: 51px;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
 }
-
+.share .skypeShare {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 4px;
+}
+.share .skypeShareLogo {
+  left: 2px !important;
+  top: 2px !important;
+}
+.share small + * {
+  margin-right: 4px;
+}
+.donate {
+  margin-left: auto;
+}
+.donate a {
+  display: inline-flex;
+}
+.donate a img {
+  height: 30px;
+}
 
 @media screen and (max-width: 720px) {
   nav select {
@@ -119,9 +172,6 @@ li:nth-child(even) {
   }
   nav span {
     display: none;
-  }
-  .select-wrapper {
-    position: relative;;
   }
   .select-wrapper:before {
     content: '▽';
@@ -135,8 +185,10 @@ li:nth-child(even) {
     box-sizing: border-box;
     background: #fff;
     color: #999;
-    border: 1px solid #ebebeb;
     border-left: 0;
     pointer-events: none;
+  }
+  footer small {
+    display: none;
   }
 }
