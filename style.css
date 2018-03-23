@@ -124,6 +124,10 @@ li:nth-child(even) {
   -ms-filter: blur(5px);
   filter: blur(5px);
 }
+.share .share-button {
+  display: flex;
+  align-items: center;
+}
 .share .skypeShare {
   width: 20px !important;
   height: 20px !important;
