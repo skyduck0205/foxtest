@@ -84,7 +84,7 @@ footer small {
   margin-right: 10px;
   color: #999;
 }
-section + section {
+section {
   margin-top: 20px;
 }
 h2 {
