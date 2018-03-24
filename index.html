@@ -93,7 +93,7 @@
     <div class="donate">
       <small>作者: <a href="#contact">skyduck</a></small>
       <small>|</small>
-      <small>贊助不會讓網站更好</small>
+      <small>{{trashTalks[talkIndex]}}</small>
       <small class="warn">開通了→</small>
       <a href="https://p.opay.tw/x8CAF" target="_blank"><img src="https://payment.opay.tw/Content/themes/WebStyle201404/images/allpay.png" /></a>
     </div>
@@ -113,7 +113,7 @@
     angular.module('Test', []);
     angular
       .module('Test')
-      .controller('TestController', function($scope, $window) {
+      .controller('TestController', function($scope, $window, $interval) {
         $scope.contact = $window.location.search === '?contact' || $window.location.hash === '#contact';
         $scope.selector = [
           { id: 'test1', label: '工業大樹鋸' },
@@ -122,6 +122,16 @@
         $scope.set = 'test1';
         $scope.questions = {};
         $scope.search = '';
+        $scope.trashTalks = [
+          '贊助: 贊助不會讓網站更好',
+          '贊助: 沒唸書拿高分良心不安，買張贖罪券吧',
+          '贊助: 謝謝你的葵瓜子，我的倉鼠會很開心',
+          '贊助: 請我吃午餐',
+          '贊助: 如果你100分，安慰沒有滿分的我',
+          '贊助: 地方的工程師需要你的贊助',
+          '贊助: 聽海哭的聲音這片海未免也太多情北七到天明'
+        ];
+        $scope.talkIndex = 0;
         $scope.onClearClick = function() {
           $scope.search = '';
         };
@@ -134,6 +144,8 @@
           $scope.contact = $window.location.hash === '#contact';
           $scope.$apply();
         }
+
+        $interval(function() { $scope.talkIndex = ($scope.talkIndex + 1) % $scope.trashTalks.length; }, 10000);
       })
       .filter('highlight', function($sce) {
         return function(text, phrase) {
