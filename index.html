@@ -37,6 +37,7 @@
   <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
   <script src="test0.js"></script>
   <script src="test1.js"></script>
+  <script src="test2.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
 
   <!-- Skype Sharing -->
@@ -116,10 +117,11 @@
       .controller('TestController', function($scope, $window, $interval) {
         $scope.contact = $window.location.search === '?contact' || $window.location.hash === '#contact';
         $scope.selector = [
+          { id: 'test2', label: '工業互憐網' },
           { id: 'test1', label: '工業大樹鋸' },
           { id: 'test0', label: '小吃店老闆' }
         ];
-        $scope.set = 'test1';
+        $scope.set = 'test2';
         $scope.questions = {};
         $scope.search = '';
         $scope.trashTalks = [
